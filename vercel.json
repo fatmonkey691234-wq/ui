@@ -2,6 +2,6 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
   "installCommand": "pnpm install --no-frozen-lockfile",
-  "buildCommand": "NODE_OPTIONS=--max-old-space-size=4096 pnpm --filter=v4 registry:build && NODE_OPTIONS=--max-old-space-size=4096 pnpm --filter=v4 exec next build",
+  "buildCommand": "NODE_OPTIONS=--max-old-space-size=4096 pnpm --filter=v4 registry:build && NODE_OPTIONS=--max-old-space-size=4096 pnpm --filter=v4 exec next build --webpack",
   "outputDirectory": "apps/v4/.next"
 }

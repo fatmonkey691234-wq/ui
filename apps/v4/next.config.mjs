@@ -23,6 +23,7 @@ const nextConfig = {
     cpus: 1,
     memoryBasedWorkersCount: false,
     workerThreads: false,
+    webpackBuildWorker: true,
     webpackMemoryOptimizations: true,
     // Rewrite barrel imports to deep imports so a single icon doesn't pull the
     // whole package into the module graph. Next already optimizes lucide-react,
@@ -56,6 +57,12 @@ const nextConfig = {
   },
   turbopack: {
     root: path.resolve(import.meta.dirname, "../.."),
+  },
+  webpack(config) {
+    // The full registry creates a multi-gigabyte persistent cache on Vercel.
+    // Avoid retaining and serializing that cache during production builds.
+    config.cache = false
+    return config
   },
   redirects() {
     return [
